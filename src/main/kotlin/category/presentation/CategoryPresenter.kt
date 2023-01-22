@@ -18,8 +18,6 @@ class CategoryPresenter(
         println(
             "Choose your destiny! (Type)\n" +
                     "1 - Show List of Categories \n"
-//                    + "2 - Choose meal category by category name \n"
-
         )
         val input = readln()
         when (input) {
@@ -27,26 +25,12 @@ class CategoryPresenter(
                 showCategoryList(data)
                 chooseCategory()
             }
-//            "2" -> chooseCategory()
-
         }
     }
 
     private suspend fun showCategoryList(data: CategoryEntity?) {
         println(data?.categoryList)
         chooseCategory()
-    }
-
-    fun sortByName(): CategoryEntity {
-        return CategoryEntity(CategoryList(data?.categoryList?.categories?.sortedBy { it.strCategory }))
-    }
-
-    fun sortDescendingByName() : CategoryEntity {
-        return CategoryEntity(CategoryList(data?.categoryList?.categories?.sortedByDescending { it.strCategory }))
-    }
-
-    fun filterCategoryList(text: String) : CategoryEntity {
-        return CategoryEntity(CategoryList(data?.categoryList?.categories?.filter { it.strCategory!!.lowercase().contains(text.lowercase()) }))
     }
 
 
@@ -62,10 +46,16 @@ suspend fun chooseCategory() {
     when (input.first()) {
         '1' -> showCategory(input.split(" ")[1])
 
-        '2' -> showCategoryList(filterCategoryList(input.split(" ")[1]))
+        '2' -> {
+            showCategoryList(interactor.filterCategoryList(input.split(" ")[1], data))
+        }
 
-        '8' -> showCategoryList(sortByName())
-        '9' -> showCategoryList(sortDescendingByName())
+        '8' -> {
+            showCategoryList(interactor.sortByName(data))
+        }
+        '9' -> {
+            showCategoryList(interactor.sortDescendingByName(data))
+        }
 
         else -> {
             print("Incorrect input")

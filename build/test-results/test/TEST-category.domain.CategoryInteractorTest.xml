@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="category.domain.CategoryInteractorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-01-22T18:30:37" hostname="igor-kubuntu" time="0.118">
+  <properties/>
+  <testcase name="filterCategoryList()" classname="category.domain.CategoryInteractorTest" time="0.118"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

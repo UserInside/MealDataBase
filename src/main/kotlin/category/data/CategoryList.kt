@@ -23,7 +23,7 @@ class CategoryGatewayImplementation(
 
 }
 
-fun map(from: CategoryList?) : CategoryEntity {   //TODO почему сразу не внести это преобразование в реквест выше?
+fun map(from: CategoryList?) : CategoryEntity {
         return CategoryEntity(from)
 }
 

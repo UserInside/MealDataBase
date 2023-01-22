@@ -11,13 +11,9 @@ import receipt.presentation.ReceiptPresenter
 class MealPresenter(
     private val interactor: MealInteractor
 ) {
-    var data: MealEntity? = null
 
     suspend fun initialAction() {
-        data = interactor.fetchData()
-        showMealList(data)
-        chooseMeal()
-
+        showMealList(interactor.fetchData())
     }
 
     private suspend fun showMealList(data: MealEntity?) {
@@ -58,7 +54,7 @@ class MealPresenter(
             }
             else -> {
                 println("Incorrect input")
-                showMealList(data)
+                showMealList(interactor.data)
                 chooseMeal()
             }
         }
